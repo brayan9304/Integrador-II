@@ -1,0 +1,68 @@
+
+entity Course {
+	id Long required,
+    name String required,
+    subject String required,
+    description String required
+}
+
+entity Session {
+	id Long required,
+    name String required,
+    description String required,
+    semester Integer required,
+    date ZonedDateTime required
+}
+
+entity Professor {
+	userName String required,
+    email String required,
+    relatedUserId Long required
+}
+
+entity Material {
+	id Long required,
+    name String required,
+    materialFile AnyBlob required
+}
+
+entity Post{
+	id Long required,
+    name String required,
+    content String required,
+    materialFile AnyBlob required
+}
+
+entity Comment{
+	id Long required,
+    content String required,
+    date ZonedDateTime required
+}
+relationship OneToMany {
+	Course{session} to Session
+}
+
+relationship OneToMany {
+	Professor{course} to Course
+}
+
+relationship ManyToMany {
+	Session{Material(id)} to Material
+}
+relationship OneToMany {
+	Professor{post} to Post
+}
+
+relationship OneToMany {
+	Post{comment} to Comment
+}
+relationship OneToMany {
+	Professor{comment} to Comment
+}
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with pi

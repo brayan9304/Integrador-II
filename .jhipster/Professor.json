@@ -1,0 +1,52 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "course",
+            "otherEntityName": "course",
+            "otherEntityRelationshipName": "professor"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "post",
+            "otherEntityName": "post",
+            "otherEntityRelationshipName": "professor"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "comment",
+            "otherEntityName": "comment",
+            "otherEntityRelationshipName": "professor"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "userName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "relatedUserId",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180520220931",
+    "entityTableName": "professor",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "angularJSSuffix": "pi"
+}
